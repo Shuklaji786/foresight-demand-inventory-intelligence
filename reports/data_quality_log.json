@@ -1,0 +1,42 @@
+[
+  {
+    "issue": "Duplicate sku_master rows (same sku_id repeated)",
+    "action": "Kept first occurrence, dropped rest",
+    "rows_affected": 3
+  },
+  {
+    "issue": "Inconsistent category labels (casing / accents, e.g. 'decor' vs 'D\u00e9cor')",
+    "action": "Standardised to a single canonical label per category",
+    "rows_affected": 8
+  },
+  {
+    "issue": "Missing unit_cost",
+    "action": "Imputed with the category median unit_cost",
+    "rows_affected": 2
+  },
+  {
+    "issue": "Duplicate sales_daily rows (same date + sku_id repeated)",
+    "action": "Kept first occurrence, dropped rest",
+    "rows_affected": 25
+  },
+  {
+    "issue": "Missing units_sold",
+    "action": "Imputed with the SKU's median units_sold (fallback 0)",
+    "rows_affected": 294
+  },
+  {
+    "issue": "Negative units_sold (impossible value)",
+    "action": "Clipped to 0",
+    "rows_affected": 0
+  },
+  {
+    "issue": "Missing on_order_units",
+    "action": "Assumed no stock on order (filled with 0)",
+    "rows_affected": 83
+  },
+  {
+    "issue": "Sales rows referencing an unknown sku_id",
+    "action": "Dropped (no master data to join)",
+    "rows_affected": 0
+  }
+]
